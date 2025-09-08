@@ -1,4 +1,4 @@
-# KPI-Generate
+<img width="81" height="12217" alt="image" src="https://github.com/user-attachments/assets/72ad80e6-f0a9-49f5-ae07-9f66393cf975" /># KPI-Generate
 # Step1: To import dump from redmine to PSQL
 1. download dump and remove unnecessary columns
 2. Use below query to create table on PSQL
@@ -171,7 +171,130 @@ healthcheckapp_infra,
 healthcheck_category,
 ticket_category,
 IncidentTicket_Created,
-incident
+incident,
+case
+when subject like 'Perform Health check in Rancher, Grafana SMTP%' then 'Monitoring'
+when subject like 'WFO case handling process health check%' then 'Monitoring'
+when subject like 'Perform Nifi health check for NDPDeploy SDB%' then 'Monitoring'
+when subject like 'NCIB open tickets validation%' then 'User Ticket'
+when subject like 'NCIB- checking N-1 most recent%' then 'Monitoring'
+when subject like 'NDP AI ML health check In Airflow & Postgres Pod utilization%' then 'Monitoring'
+when subject like 'NDP AI ML health check for Precheck%' then 'Monitoring'
+when subject like 'Health check of Smartapp Performance script for A1TA%' then 'Monitoring'
+when subject like 'Perform CPU, Memory, Disk and Pod ADF%' then 'Monitoring'
+when subject like 'insights NDPD AIML Smart Scheduling health%' then 'Monitoring'
+when subject like 'insights for SWS - MR%' then 'Monitoring'
+when subject like 'WFO Powerbi dashboard health chec%' then 'Monitoring'
+when subject like 'Perform Health check of insights for Elasticsearch Audit report in%' then 'Monitoring'
+when subject like 'Perform Health check of insights for Elasticsearch auditlog%' then 'Monitoring'
+when subject like 'NDP AI ML health check for Precheck, Airflow DA%' then 'Monitoring'
+when subject like 'Perform Health Check in Grafana%' then 'Monitoring'
+when subject like 'insights NDPd A1 Austria, Mwingz, TEFSpain and Perfectum%' then 'Monitoring'
+when subject like 'insights SWS dataflow and dataset case table%' then 'Monitoring'
+when subject like 'Attend AI BI T1-T2 Weekly Internal%' then 'Meeting'
+when subject like 'Smartapp_TEMS Discovery Device%' then 'User Ticket'
+when subject like 'Perform Health check of insights for Care SWS reports date%' then 'Monitoring'
+end as monit_effect,
+
+CASE
+when subject like 'Perform Health check in Rancher, Grafana SMTP%' then 'HC Report'
+when subject like 'WFO case handling process health check%' then 'Health check'
+when subject like 'Perform Nifi health check for NDPDeploy SDB%' then 'Health check'
+when subject like 'NCIB open tickets validation%' then 'User Mail'
+when subject like 'NCIB- checking N-1 most recent%' then 'HC Report'
+when subject like 'NDP AI ML health check In Airflow & Postgres Pod utilization%' then 'Health Check'
+when subject like 'NDP AI ML health check for Precheck%' then 'Health Check'
+when subject like 'Health check of Smartapp Performance script for A1TA%' then 'Health Check'
+when subject like 'Perform CPU, Memory, Disk and Pod ADF%' then 'Health Check'
+when subject like 'insights NDPD AIML Smart Scheduling health%' then 'HC Report'
+when subject like 'insights for SWS - MR%' then 'HC Report'
+when subject like 'WFO Powerbi dashboard health chec%' then 'HC Report'
+when subject like 'Perform Health check of insights for Elasticsearch Audit report in%' then 'HC Report'
+when subject like 'Perform Health check of insights for Elasticsearch auditlog%' then 'HC Report'
+when subject like 'NDP AI ML health check for Precheck, Airflow DA%' then 'Health Check'
+when subject like 'Perform Health Check in Grafana%' then 'Health Check'
+when subject like 'insights NDPd A1 Austria, Mwingz, TEFSpain and Perfectum%' then 'HC Report'
+when subject like 'insights SWS dataflow and dataset case table%' then 'HC Report'
+when subject like 'Attend AI BI T1-T2 Weekly Internal%' then 'Meeting'
+when subject like 'Smartapp_TEMS Discovery Device%' then 'User Mail'
+when subject like 'Perform Health check of insights for Care SWS reports date%' then 'HC Report'
+end as issue_iden_mode,
+
+CASE
+when subject like 'Perform Health check in Rancher, Grafana SMTP%' then 'HC Report'
+when subject like 'WFO case handling process health check%' then 'Health Check'
+when subject like 'Perform Nifi health check for NDPDeploy SDB%' then 'Health Check'
+when subject like 'NCIB open tickets validation%' then 'Ticket Validation'
+when subject like 'NCIB- checking N-1 most recent%' then 'HC Report'
+when subject like 'NDP AI ML health check In Airflow & Postgres Pod utilization%' then 'Health Check'
+when subject like 'NDP AI ML health check for Precheck%' then 'Health Check'
+when subject like 'Perform Nifi health check for NDPDeploy SDB%' then 'Health Check'
+when subject like 'Health check of Smartapp Performance script for A1TA%' then 'Health Check'
+when subject like 'Perform CPU, Memory, Disk and Pod ADF%' then 'Health Check'
+when subject like 'insights NDPD AIML Smart Scheduling health%' then 'HC Report'
+when subject like 'insights for SWS - MR%' then 'HC Report'
+when subject like 'WFO Powerbi dashboard health chec%' then 'HC Report'
+when subject like 'Perform Health check of insights for Elasticsearch Audit report in%' then 'HC Report'
+when subject like 'Perform Health check of insights for Elasticsearch auditlog%' then 'HC Report'
+when subject like 'NDP AI ML health check for Precheck, Airflow DA%' then 'Health Check'
+when subject like 'Perform Health Check in Grafana%' then 'Health Check'
+when subject like 'insights NDPd A1 Austria, Mwingz, TEFSpain and Perfectum%' then 'HC Report'
+when subject like 'insights SWS dataflow and dataset case table%' then 'HC Report'
+when subject like 'Attend AI BI T1-T2 Weekly Internal%' then 'Meeting'
+when subject like 'Smartapp_TEMS Discovery Device%' then 'User Mail'
+when subject like 'Perform Health check of insights for Care SWS reports date%' then 'HC Report'
+end as issue_iden_mod1,
+
+CASE
+when subject like 'Perform Health check in Rancher, Grafana SMTP%' then 'Infra'
+when subject like 'WFO case handling process health check%' then 'Application'
+when subject like 'Perform Nifi health check for NDPDeploy SDB%' then 'Application'
+when subject like 'NCIB open tickets validation%' then 'Application'
+when subject like 'NCIB- checking N-1 most recent%' then 'Application'
+when subject like 'NDP AI ML health check In Airflow & Postgres Pod utilization%' then 'Infra'
+when subject like 'NDP AI ML health check for Precheck%' then 'Application'
+when subject like 'Perform Nifi health check for NDPDeploy SDB%' then 'Application'
+when subject like 'Health check of Smartapp Performance script for A1TA%' then 'Application'
+when subject like 'Perform CPU, Memory, Disk and Pod ADF%' then 'Infra'
+when subject like 'insights NDPD AIML Smart Scheduling health%' then 'Application'
+when subject like 'insights for SWS - MR%' then 'Application'
+when subject like 'WFO Powerbi dashboard health chec%' then 'Application'
+when subject like 'Perform Health check of insights for Elasticsearch Audit report in%' then 'Infra'
+when subject like 'Perform Health check of insights for Elasticsearch auditlog%' then 'Application'
+when subject like 'NDP AI ML health check for Precheck, Airflow DA%' then 'Application'
+when subject like 'Perform Health Check in Grafana%' then 'Infra'
+when subject like 'insights NDPd A1 Austria, Mwingz, TEFSpain and Perfectum%' then 'Application'
+when subject like 'insights SWS dataflow and dataset case table%' then 'Application'
+when subject like 'Attend AI BI T1-T2 Weekly Internal%' then 'Application'
+when subject like 'Smartapp_TEMS Discovery Device%' then 'Application'
+when subject like 'Perform Health check of insights for Care SWS reports date%' then 'Application'
+end as healthchckapp_infra,
+
+CASE
+when subject like 'Perform Health check in Rancher, Grafana SMTP%' then 'Pod Metrics'
+when subject like 'WFO case handling process health check%' then 'Similar case id test'
+when subject like 'Perform Nifi health check for NDPDeploy SDB%' then 'Nifi SDB blocks health check'
+when subject like 'NCIB open tickets validation%' then 'Ticket Validation'
+when subject like 'NCIB- checking N-1 most recent%' then 'Data Monitoring'
+when subject like 'NDP AI ML health check In Airflow & Postgres Pod utilization%' then 'Pod Metrics'
+when subject like 'NDP AI ML health check for Precheck%' then 'Precheck usecase'
+when subject like 'Perform Nifi health check for NDPDeploy SDB%' then 'Nifi SDB blocks health check'
+when subject like 'Health check of Smartapp Performance script for A1TA%' then 'Data Monitoring'
+when subject like 'Perform CPU, Memory, Disk and Pod ADF%' then 'Pod Metrics'
+when subject like 'insights NDPD AIML Smart Scheduling health%' then 'Data Monitoring'
+when subject like 'insights for SWS - MR%' then 'Data Monitoring'
+when subject like 'WFO Powerbi dashboard health chec%' then 'Data Monitoring'
+when subject like 'Perform Health check of insights for Elasticsearch Audit report in%' then 'Pod Metrics'
+when subject like 'Perform Health check of insights for Elasticsearch auditlog%' then 'Elasticsearch Auto trigger validation'
+when subject like 'NDP AI ML health check for Precheck, Airflow DA%' then 'Precheck usecase'
+when subject like 'Perform Health Check in Grafana%' then 'Pod Metrics'
+when subject like 'insights NDPd A1 Austria, Mwingz, TEFSpain and Perfectum%' then 'Data Monitoring'
+when subject like 'insights SWS dataflow and dataset case table%' then 'Data Monitoring'
+when subject like 'Attend AI BI T1-T2 Weekly Internal%' then 'Meeting'
+when subject like 'Smartapp_TEMS Discovery Device%' then 'Software Upgrade Activity '
+when subject like 'Perform Health check of insights for Care SWS reports date%' then 'Data Monitoring'
+end as healthcheck category
+
 from finalop
 order by ticket
 ```
