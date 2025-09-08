@@ -293,7 +293,7 @@ when subject like 'insights SWS dataflow and dataset case table%' then 'Data Mon
 when subject like 'Attend AI BI T1-T2 Weekly Internal%' then 'Meeting'
 when subject like 'Smartapp_TEMS Discovery Device%' then 'Software Upgrade Activity '
 when subject like 'Perform Health check of insights for Care SWS reports date%' then 'Data Monitoring'
-end as healthcheck category
+end as healthcheckcategory
 
 from finalop
 order by ticket
