@@ -1,4 +1,4 @@
-<img width="81" height="12217" alt="image" src="https://github.com/user-attachments/assets/72ad80e6-f0a9-49f5-ae07-9f66393cf975" /># KPI-Generate
+# KPI-Generate
 # Step1: To import dump from redmine to PSQL
 1. download dump and remove unnecessary columns
 2. Use below query to create table on PSQL
